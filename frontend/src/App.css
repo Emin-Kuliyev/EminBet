@@ -4,11 +4,13 @@
     --border: #334155; --accent: #f59e0b;
     --gold: #f59e0b;
 }
+
 body.light-mode {
     --bg: #f1f5f9; --sb: #ffffff; --card: #ffffff;
     --text: #1e293b; --text-sec: #64748b;
     --border: #e2e8f0; --accent: #2563eb;
 }
+
 body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
 * { box-sizing: border-box; }
 
@@ -21,14 +23,35 @@ body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg);
 
 .league-nav { padding: 15px; flex: 1; overflow-y: auto; }
 .nav-title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-sec); margin-bottom: 10px; font-weight: bold; margin-top: 15px; }
-.nav-item { display: flex; justify-content: space-between; align-items: center; width: 100%; background: transparent; border: none; color: var(--text); padding: 10px; cursor: pointer; border-radius: 8px; font-weight: 500; transition: 0.2s; }
+
+/* NAV ITEM (Мелкий шрифт как был раньше) */
+.nav-item { 
+    display: flex; justify-content: space-between; align-items: center; width: 100%; 
+    background: transparent; border: none; color: var(--text); 
+    padding: 8px 10px; 
+    cursor: pointer; border-radius: 8px; font-weight: 500; font-size: 0.85rem; 
+    transition: 0.2s; 
+}
 .nav-item:hover, .nav-item.active { background-color: var(--bg); }
 .nav-left { display: flex; gap: 10px; align-items: center; flex: 1; }
+
 .fav-btn-sidebar { background: none; border: none; cursor: pointer; font-size: 1.1rem; color: var(--text-sec); padding: 0 5px; margin-right: 5px; opacity: 0.5; transition: 0.2s; }
 .fav-btn-sidebar:hover, .fav-btn-sidebar.active { color: var(--gold); opacity: 1; }
 
 .nav-flag { width: 24px; height: 18px; object-fit: cover; border-radius: 2px; }
 .count-badge { background-color: var(--border); font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; }
+
+/* КНОПКА-СТРЕЛКА (Без фона) */
+.nav-expand-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-sec);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 0 5px;
+}
+.nav-expand-btn:hover { color: var(--accent); }
+
 .nav-submenu { overflow: hidden; background-color: rgba(0, 0, 0, 0.2); border-radius: 0 0 8px 8px; display: flex; flex-direction: column; }
 .nav-subitem { display: block; width: 100%; text-align: left; background: transparent; border: none; color: var(--text-sec); padding: 6px 10px 6px 35px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; }
 .nav-subitem:hover { color: var(--accent); background-color: rgba(255,255,255,0.05); }
@@ -67,6 +90,14 @@ body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg);
 .fav-btn-card { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--border); transition: 0.2s; padding: 0 5px; }
 .fav-btn-card:hover, .fav-btn-card.active { color: var(--gold); }
 
+/* --- ФЛАГИ --- */
+img[src*="CL.png"] {
+    background-color: white !important;
+    padding: 2px !important;
+    border-radius: 4px !important;
+    object-fit: contain !important;
+}
+
 .teams-grid { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 20px; align-items: start; }
 .team-column { display: flex; flex-direction: column; gap: 10px; }
 .team-column.away-col { align-items: flex-end; text-align: right; }
@@ -83,6 +114,8 @@ body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg);
 .f-W { background-color: #22c55e; }
 .f-D { background-color: #94a3b8; }
 .f-L { background-color: #ef4444; }
+.form-badge.latest { border: 2px solid var(--gold); transform: scale(1.2); z-index: 1; box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+
 .trends-container { display: flex; flex-direction: column; gap: 5px; }
 .trend-item { font-size: 0.85rem; display: flex; gap: 8px; align-items: center; }
 .trend-text { color: var(--text); }
@@ -91,6 +124,12 @@ body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg);
 .rec-badge { font-size: 0.7rem; background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 2px 6px; border-radius: 4px; border: 1px solid #f59e0b; }
 .context-block { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; }
 .context-title { font-size: 0.75rem; color: var(--text-sec); text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 5px; }
+
+/* STATISTICS HIGHLIGHTING */
+.trends-group { margin-bottom: 10px; }
+.trends-group.context { border-top: 1px dashed var(--border); padding-top: 5px; margin-top: 5px; }
+.context-label { font-size: 0.75rem; color: var(--text-sec); font-weight: bold; margin-bottom: 3px; }
+.context-item { font-style: italic; color: #f59e0b !important; } /* ORANGE COLOR */
 
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; display: flex; justify-content: center; align-items: center; }
 .modal-content { background: var(--card); border-radius: 12px; border: 1px solid var(--border); display: flex; flex-direction: column; }
@@ -130,13 +169,42 @@ body { margin: 0; font-family: 'Inter', sans-serif; background-color: var(--bg);
 .h-side { font-size: 0.75rem; color: var(--text-sec); }
 .h-score { font-weight: bold; font-size: 1.2rem; min-width: 60px; text-align: right; }
 
-/* FIX FOR CL LOGO (White background for 'CL.png') */
-img[src*="CL.png"] {
-    background-color: white !important;
-    padding: 2px !important;
-    border-radius: 4px !important;
-    object-fit: contain !important;
-}
+.league-modal { width: 850px; max-width: 95%; max-height: 85vh; }
+.league-stats-container { display: flex; gap: 20px; overflow-y: auto; }
+.ls-section { flex: 1; background: rgba(0,0,0,0.1); padding: 15px; border-radius: 8px; }
+.ls-section h4 { margin-top: 0; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; text-align: center; }
+.table-wrapper { overflow-x: auto; }
+.standings-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.standings-table th { text-align: left; color: var(--text-sec); border-bottom: 1px solid var(--border); padding: 6px; font-weight: 600; }
+.standings-table td { padding: 8px 6px; border-bottom: 1px solid var(--border); }
+.st-team { display: flex; align-items: center; gap: 8px; }
+.st-points { font-weight: bold; color: var(--accent); text-align: center; }
+.scorers-list { list-style: none; padding: 0; margin: 0; }
+.scorers-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.sc-name small { display: block; color: var(--text-sec); font-size: 0.75rem; }
+.sc-goals { font-weight: bold; color: #22c55e; }
+.h2h-section { margin-top: 15px; margin-bottom: 15px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
+.h2h-title { font-size: 0.75rem; font-weight: bold; color: var(--text-sec); margin-bottom: 8px; text-transform: uppercase; text-align: center; }
+.h2h-item { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 4px 0; border-bottom: 1px dashed var(--border); }
+.h2h-item:last-child { border: none; }
+.h2h-date { color: var(--text-sec); width: 70px; }
+.h2h-teams { flex: 1; text-align: center; }
+.h2h-score { font-weight: bold; color: var(--accent); width: 40px; text-align: right; }
+.ht-score { font-size: 0.75rem; color: var(--text-sec); margin-top: 2px; }
+.stats-toggle-row { text-align: center; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 10px; }
+.stats-btn { background: none; border: none; color: var(--accent); font-size: 0.85rem; cursor: pointer; font-weight: 600; }
+.stats-btn:hover { text-decoration: underline; }
+.stats-dropdown { display: flex; justify-content: space-between; background-color: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-top: 10px; }
+.stats-col { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.stats-col.right { text-align: right; align-items: flex-end; }
+.stat-item { font-size: 0.8rem; color: var(--text); }
+.stat-empty { font-size: 0.8rem; color: var(--text-sec); }
+.prediction-box { margin-top: 10px; font-size: 0.9rem; font-weight: 600; }
+.prediction-box.home { text-align: left; }
+.prediction-box.away { text-align: right; }
+.pred-item.good { color: #22c55e; }
+.pred-item.neutral { color: var(--text-sec); font-size: 0.8rem; font-weight: 400; }
+.top-badge { background-color: var(--gold); color: #000; font-size: 0.6rem; padding: 1px 4px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
 
 @media (max-width: 768px) {
   .app-wrapper { flex-direction: column; }
@@ -147,63 +215,6 @@ img[src*="CL.png"] {
   .team-identity.away { flex-direction: row; justify-content: flex-start; }
   .trends-container.away-trends { align-items: flex-start; text-align: left; }
   .name-form-box.end { align-items: flex-start; }
+  .league-stats-container { flex-direction: column; }
+  .ls-section { margin-bottom: 15px; }
 }
-/* --- НОВЫЕ СТИЛИ (ПРОГНОЗ И КНОПКА) --- */
-
-.prediction-box {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-.prediction-box.home { text-align: left; }
-.prediction-box.away { text-align: right; }
-
-.pred-item.good { color: #22c55e; }
-.pred-item.neutral { color: var(--text-sec); font-size: 0.8rem; font-weight: 400; }
-
-.top-badge {
-    background-color: var(--gold);
-    color: #000;
-    font-size: 0.6rem;
-    padding: 1px 4px;
-    border-radius: 4px;
-    margin-left: 6px;
-    vertical-align: middle;
-}
-
-.stats-toggle-row {
-    text-align: center;
-    margin-top: 15px;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-}
-
-.stats-btn {
-    background: none;
-    border: none;
-    color: var(--accent);
-    font-size: 0.85rem;
-    cursor: pointer;
-    font-weight: 600;
-}
-.stats-btn:hover { text-decoration: underline; }
-
-.stats-dropdown {
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(0,0,0,0.2);
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.stats-col { flex: 1; display: flex; flex-direction: column; gap: 5px; }
-.stats-col.right { text-align: right; align-items: flex-end; }
-
-.stat-item { font-size: 0.8rem; color: var(--text); }
-.stat-empty { font-size: 0.8rem; color: var(--text-sec); }
-
-.trends-group { margin-bottom: 10px; }
-.trends-group.context { border-top: 1px dashed var(--border); padding-top: 5px; margin-top: 5px; }
-.context-label { font-size: 0.75rem; color: var(--text-sec); font-weight: bold; margin-bottom: 3px; }
-.context-item { font-style: italic; color: #fbbf24; } /* Желтоватый цвет для контекста */
